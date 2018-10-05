@@ -1,7 +1,5 @@
-FROM node:8
-RUN apt update && apt upgrade -y
+FROM node
+RUN apt update && apt upgrade -y && apt install -y libasound2-dev
 RUN mkdir /usr/src/relay
-COPY assistant-relay /usr/src/relay/
+COPY relay /usr/src/relay/
 RUN cd /usr/src/relay && npm install
-EXPOSE 3000
-CMD [ “npm”, “run”, “start” ]
